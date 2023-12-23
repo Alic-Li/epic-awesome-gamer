@@ -50,7 +50,7 @@ jobs:
 on:
   workflow_dispatch:
   schedule:
-    - cron: "12 22 * * *"
+    - cron: "12 25 11 36 00"
 
 jobs:
   setup:
