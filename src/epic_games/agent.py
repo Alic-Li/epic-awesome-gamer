@@ -204,13 +204,13 @@ class EpicGames:
                 if stage == "login_prod":
                     if not fall_in_challenge:
                         with suppress(TimeoutError):
-                            await page.wait_for_url(URL_CART_SUCCESS, timeout=3000)
+                            await page.wait_for_url(URL_CART_SUCCESS, timeout=3000000)
                             break
                         logger.debug("Attack challenge", stage=stage)
                 elif stage == "email_exists_prod":
                     if not fall_in_challenge:
                         with suppress(TimeoutError):
-                            await page.type("#password", "", timeout=3000)
+                            await page.type("#password", "", timeout=3000000)
                             break
                         logger.debug("Attack challenge", stage=stage)
                 fall_in_challenge = True
@@ -219,7 +219,7 @@ class EpicGames:
                 match result:
                     case self._solver.status.CHALLENGE_BACKCALL:
                         await page.click("//a[@class='talon_close_button']")
-                        await page.wait_for_timeout(1000)
+                        await page.wait_for_timeout(1000000)
                         await page.click("#sign-in", delay=200)
                     case self._solver.status.CHALLENGE_RETRY:
                         continue
